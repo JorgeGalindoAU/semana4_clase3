@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <h2 class="text-center fw-bold text-primary">{{title()}}</h2>
+    </div>
+</div>
+<br>
+<form [formGroup]="loginForm">
+    <div class="row">
+        <div class="col-6 mx-auto text-center">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" id="email" name="email" class="form-control" formControlName="email">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6 mx-auto text-center">
+            <label for="password" class="form-label">Password</label>
+            <input type="text" id="password" name="password" class="form-control" formControlName="password">
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div type="submit" class="col-8 mx-auto text-center d-grid">
+            <button class="btn btn-outline-primary" [disabled]="!this.isFormValid()" (click)="executeAuthentication()">
+                @if(isLoading()) {
+                <div class="spinner-border text-primary" role="status">
+                </div>
+                } @else {
+                <span>{{title()}}</span>
+                }
+            </button>
+        </div>
+    </div>
+</form>

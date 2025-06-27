@@ -1,0 +1,28 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link disabled">Resultados</a>
+        </li>
+
+        @for (option of [1, 5, 10]; track option) {
+        <li class="page-item" [ngClass]="this.currentCount() === option ? 'active': ''" (click)="selectCount(option)">
+            <a class="page-link">{{ option }}</a>
+        </li>
+        }
+    </ul>
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" [ngClass]="this.currentPage() === 1 ? 'disabled': ''"
+                (click)="substractPage()">Anterior</a>
+        </li>
+        @for (page of totalPages(); track page) {
+        <li class="page-item" [ngClass]="this.currentPage() === page ? 'active':''"><a (click)="selectPage(page)"
+                class="page-link">{{page}}</a></li>
+
+        }
+        <li class="page-item">
+            <a class="page-link" [ngClass]="this.currentPage() === this.numberOfPages() ? 'disabled': ''"
+                (click)="addPage()">Siguiente</a>
+        </li>
+    </ul>
+</nav>

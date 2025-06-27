@@ -1,0 +1,103 @@
+<div class="container mt-4">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-auto"><app-go-back-button></app-go-back-button>
+            </div>
+        </div>
+    </div>
+    <br>
+    @if(isCreated())
+    {
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center fw-bold text-primary">Usuario {{this.userCreated()?.name}} creado correctamente</h2>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ this.userCreated()?.name ?? 'NO USER' }}</h2>
+                            <h3 class="card-subtitle mb-2 text-body-secondary">{{ this.userCreated()?.job }}</h3>
+
+                            <div class="d-flex justify-content-end gap-2">
+                                <small
+                                    class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success-emphasis bg-primary-subtle border border-primary-subtle rounded-2">
+                                    ID: {{ this.userCreated()?.id }}
+                                </small>
+                                <small
+                                    class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
+                                    {{ this.userCreated()?.createdAt | date:'MMM d, y, HH:mm:ss' }}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    } @else {
+
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center fw-bold text-primary">Crear un nuevo usuario</h2>
+        </div>
+        <br>
+        <form #createForm="ngForm" (ngSubmit)="createUser()">
+            <div class="row">
+                <div class="col-6 mx-auto text-center">
+                    <label for="name" class="form-label">Name</label>
+                    <input [(ngModel)]="userJob.name" #nameField="ngModel" type="text" id="name" name="name"
+                        class="form-control" required minlength="5" [disabled]="isLoading()">
+                    @if (nameField.invalid && (nameField.dirty || nameField.touched)) {
+                    <br>
+                    <div class="alert alert-danger">
+                        @if (nameField.hasError('required')) {
+                        <span>El campo nombre es obligatorio</span>
+                        }
+                        @if (nameField.hasError('minlength')) {
+                        <span>El campo nombre debe tener al menos 5 caracteres</span>
+                        }
+                    </div>
+                    }
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-6 mx-auto text-center">
+                    <label for="job" class="form-label">Job</label>
+                    <input [(ngModel)]="userJob.job" #jobField="ngModel" type="text" id="job" name="job"
+                        class="form-control" required minlength="10" [disabled]="isLoading()">
+                    @if (jobField.invalid && (jobField.dirty || jobField.touched)) {
+                    <br>
+                    <div class="alert alert-danger">
+                        @if (jobField.hasError('required')) {
+                        <span>El campo trabajo es obligatorio</span>
+                        }
+                        @if (jobField.hasError('minlength')) {
+                        <span>El campo trabajo debe tener al menos 10 caracteres</span>
+                        }
+                    </div>
+                    }
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div type="submit" class="col-8 mx-auto text-center d-grid">
+                    <button class="btn btn-outline-primary" [disabled]="createForm.invalid || isLoading()">
+                        @if(isLoading()) {
+                        <div class="spinner-border text-primary" role="status">
+                        </div>
+                        } @else {
+                        <span>Guardar</span>
+                        }
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    }
+
+</div>

@@ -1,0 +1,48 @@
+<!-- Pantalla principal con Bootstrap -->
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary">Bienvenido a CRM AU App</h1>
+        <p class="lead text-muted">Una plataforma moderna y eficiente desarrollada con Angular 20 y Bootstrap.</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Tarjeta 1 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <app-title [title]="'Ver Usuarios'" [color]="'blue'"></app-title>
+                    <p class="card-text">Administra usuarios, roles y permisos de forma intuitiva.</p>
+                    <app-button routerLink="/users" routerLinkActive="router-link-active" (onExecute)="showMore()"
+                        [title]="'Ver más'" [color]="'blue'"></app-button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <app-title [title]="'Crear usuario'" [color]="'green'"></app-title>
+                    <p class="card-text">Crear un nuevo usuario en nuestro CRM y poder persistirlo en la API.</p>
+                    <app-button routerLink="/users/create" (onExecute)="explore()" [title]="'Crear usuario'"
+                        [color]="'green'"></app-button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <app-title [title]="'Preferencias'" [color]="'red'"></app-title>
+                    <p class="card-text">Personaliza las preferencias del sistema y opciones avanzadas.</p>
+                    <app-button (onExecute)="configure()" [title]="'Configurar'" [color]="'red'"></app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-muted small">
+        &copy; 2025 Mi Aplicación. Todos los derechos reservados.
+    </footer>
+</div>
