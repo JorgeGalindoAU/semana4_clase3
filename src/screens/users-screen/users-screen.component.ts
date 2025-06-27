@@ -6,10 +6,13 @@ import { IUser } from '../../interfaces/user.interface';
 import { IUserPagination } from '../../interfaces/user_pagination.interface';
 import { GoBackButtonComponent } from "../../components/go-back-button/go-back-button.component";
 import { RouterLink } from '@angular/router';
+import { finalize } from 'rxjs';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { Spinner } from "../../components/spinner/spinner.component";
 
 @Component({
   selector: 'app-users-screen',
-  imports: [ActiveFilterComponent, ActiveFilterComponent, Pagination, GoBackButtonComponent, RouterLink],
+  imports: [ActiveFilterComponent, ActiveFilterComponent, Pagination, GoBackButtonComponent, RouterLink, Spinner],
   templateUrl: './users-screen.component.html',
   styleUrl: './users-screen.component.css'
 })
@@ -24,6 +27,8 @@ export class UsersScreenComponent implements OnInit {
 
   showInactive = signal<boolean>(false);
   showExternals = signal<boolean>(false);
+  isLoading = signal<boolean>(true);
+  errorMessage = signal<string | null>(null);
 
   ngOnInit(): void {
     this.getUsers();
@@ -50,7 +55,11 @@ export class UsersScreenComponent implements OnInit {
   }
 
   getUsers() {
+    this.isLoading.set(true);
     this.userService.getUsers(this.currentCount(), this.currentPage())
+      .pipe(
+        finalize(() => this.isLoading.set(false))
+      )
       .subscribe(
         {
           next: (value: IUserPagination) => {
@@ -59,7 +68,11 @@ export class UsersScreenComponent implements OnInit {
             let users: IUser[] = value.data;
             this.users.set(users);
           },
-          error: (err) => console.error(err), // NOK
+          error: (err: HttpErrorResponse) => {
+            console.error(err);
+
+            this.errorMessage.set(err.message);
+          }
         }
       );
   }

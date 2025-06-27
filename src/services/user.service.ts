@@ -16,7 +16,7 @@ export class UserService {
   constructor() { }
 
   getUsers(perPage: number, page: number): Observable<IUserPagination> {
-    return this.httpClient.get(`${this.ENDPOINT_URL}?per_page=${perPage}&page=${page}`) as Observable<IUserPagination>;
+    return this.httpClient.get(`${this.ENDPOINT_URL}?delay=1&per_page=${perPage}&page=${page}`) as Observable<IUserPagination>;
   }
 
   createUser(user: IUserJob): Observable<IUserCreated> {

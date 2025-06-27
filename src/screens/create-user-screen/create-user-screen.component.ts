@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { IUserCreated, IUserJob } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import { finalize } from 'rxjs';
+import { Spinner } from "../../components/spinner/spinner.component";
 
 @Component({
   selector: 'app-create-user-screen',
-  imports: [GoBackButtonComponent, FormsModule, CommonModule],
+  imports: [GoBackButtonComponent, FormsModule, CommonModule, Spinner],
   templateUrl: './create-user-screen.component.html',
   styleUrl: './create-user-screen.component.css'
 })

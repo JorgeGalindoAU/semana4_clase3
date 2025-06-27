@@ -20,8 +20,6 @@ export class AuthFormComponent {
   title: InputSignal<string> = input('');
   onSubmit = output<AuthenticationFormAction>();
 
-  isLoading: WritableSignal<boolean> = signal<boolean>(false);
-
   emailValue = signal<string>('');
   passwordValue = signal<string>('');
 

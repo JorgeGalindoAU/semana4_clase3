@@ -27,7 +27,9 @@
             </div>
         </div>
     </div>
-
+    @if(isLoading()) {
+    <app-spinner></app-spinner>
+    } @else {
     <div class="container mt-4">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             @for (user of users(); track user.id) {
@@ -45,8 +47,10 @@
             </div>
             }
         </div>
+
     </div>
     <br>
     <app-pagination (selectedCount)="receivedNewCount($event)" (selectedPage)="receivedNewPage($event)"
         [numberOfPages]="this.totalPages()"></app-pagination>
+    }
 </div>

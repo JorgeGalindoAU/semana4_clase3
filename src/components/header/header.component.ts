@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,4 +11,12 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   firstName: string = 'Jorge';
+
+  authService: AuthService = inject(AuthService);
+
+  isLogged = computed(() => this.authService.isUserLogged);
+
+  logout() {
+    this.authService.logout();
+  }
 }
