@@ -6,5 +6,12 @@
         </div>
     </div>
     <br>
-    <app-auth-form [title]="'Register'"></app-auth-form>
+    <app-auth-form [title]="'Register'" (onSubmit)="register($event)"></app-auth-form>
+    <br>
+    @if(errorMessage()) {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> {{errorMessage()}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    }
 </div>

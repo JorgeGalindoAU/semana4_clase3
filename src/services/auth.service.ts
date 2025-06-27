@@ -20,7 +20,8 @@ export class AuthService {
   private readonly _userToken = signal<string>(localStorage.getItem('token') ?? '');
   private readonly _isUserLogged = computed(() => this._userToken() != '');
 
-  errorMessage = signal<string | null>(null);
+  errorMessageLogin = signal<string | null>(null);
+  errorMessageRegister = signal<string | null>(null);
 
   public get isUserLogged() {
     const currentToken: string = localStorage.getItem('token') ?? '';
@@ -28,7 +29,6 @@ export class AuthService {
 
     return this._isUserLogged();
   }
-
 
   login(email: string, password: string): void {
     this.httpClient.post(this.ENDPOINT_URL_LOGIN, {
@@ -49,7 +49,7 @@ export class AuthService {
           this.router.navigate(['/menu']);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMessage.set(`Error en la autenticación: ${err.message}`);
+          this.errorMessageLogin.set(`Error en la autenticación: ${err.message}`);
         }
       }
     );
@@ -73,7 +73,7 @@ export class AuthService {
           this._userToken.set(token);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMessage.set(`Error al registrar: ${err.message}`);
+          this.errorMessageRegister.set(`Error al registrar: ${err.message}`);
         }
       }
     );

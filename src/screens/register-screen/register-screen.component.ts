@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { GoBackButtonComponent } from "../../components/go-back-button/go-back-button.component";
 import { AuthFormComponent } from "../../components/auth-form/auth-form.component";
+import { AuthenticationFormAction } from '../../types/types';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register-screen',
@@ -9,5 +11,11 @@ import { AuthFormComponent } from "../../components/auth-form/auth-form.componen
   styleUrl: './register-screen.component.css'
 })
 export class RegisterScreenComponent {
+  authService: AuthService = inject(AuthService);
 
+  errorMessage = computed(() => this.authService.errorMessageRegister());
+
+  register(action: AuthenticationFormAction) {
+    this.authService.register(action.email, action.password);
+  }
 }

@@ -1,0 +1,1 @@
+export type AuthenticationFormAction = { email: string, password: string };
