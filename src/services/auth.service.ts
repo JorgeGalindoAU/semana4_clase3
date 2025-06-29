@@ -1,8 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { computed, effect, inject, Injectable, signal } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
+import { environment } from '../config/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'

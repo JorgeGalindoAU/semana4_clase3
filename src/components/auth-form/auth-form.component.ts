@@ -4,7 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
-import { AuthenticationFormAction } from '../../types/types';
+import { AuthenticationFormAction } from '../../models/types/types';
 
 @Component({
   selector: 'app-auth-form',

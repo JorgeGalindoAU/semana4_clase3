@@ -2,13 +2,13 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActiveFilterComponent } from "../../components/active-filter/active-filter.component";
 import { Pagination } from '../../components/pagination/pagination.component';
 import { UserService } from '../../services/user.service';
-import { IUser } from '../../interfaces/user.interface';
-import { IUserPagination } from '../../interfaces/user_pagination.interface';
 import { GoBackButtonComponent } from "../../components/go-back-button/go-back-button.component";
 import { RouterLink } from '@angular/router';
 import { finalize } from 'rxjs';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Spinner } from "../../components/spinner/spinner.component";
+import { IUser } from '../../models/interfaces/user.interface';
+import { IUserPagination } from '../../models/interfaces/user_pagination.interface';
 
 @Component({
   selector: 'app-users-screen',

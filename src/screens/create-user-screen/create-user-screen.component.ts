@@ -2,14 +2,13 @@ import { Component, inject, signal } from '@angular/core';
 import { GoBackButtonComponent } from "../../components/go-back-button/go-back-button.component";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { IUserCreated, IUserJob } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import { finalize } from 'rxjs';
-import { Spinner } from "../../components/spinner/spinner.component";
+import { IUserCreated, IUserJob } from '../../models/interfaces/user.interface';
 
 @Component({
   selector: 'app-create-user-screen',
-  imports: [GoBackButtonComponent, FormsModule, CommonModule, Spinner],
+  imports: [GoBackButtonComponent, FormsModule, CommonModule],
   templateUrl: './create-user-screen.component.html',
   styleUrl: './create-user-screen.component.css'
 })

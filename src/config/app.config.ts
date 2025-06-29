@@ -1,8 +1,8 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { routes } from '../routes/app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { apiKeyInterceptor } from '../interceptors/http.interceptor';
+import { routes } from './routes/app.routes';
+import { apiKeyInterceptor } from './interceptors/http.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

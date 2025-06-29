@@ -1,8 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
 import { GoBackButtonComponent } from "../../components/go-back-button/go-back-button.component";
 import { AuthFormComponent } from "../../components/auth-form/auth-form.component";
-import { AuthenticationFormAction } from '../../types/types';
 import { AuthService } from '../../services/auth.service';
+import { AuthenticationFormAction } from '../../models/types/types';
 
 @Component({
   selector: 'app-register-screen',

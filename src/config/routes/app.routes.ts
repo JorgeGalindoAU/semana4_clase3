@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { MainScreenComponent } from '../screens/main-screen/main-screen.component';
-import { UsersScreenComponent } from '../screens/users-screen/users-screen.component';
-import { CreateUserScreenComponent } from '../screens/create-user-screen/create-user-screen.component';
-import { LoginScreenComponent } from '../screens/login-screen/login-screen.component';
-import { RegisterScreenComponent } from '../screens/register-screen/register-screen.component';
 import { authGuard } from '../guards/auth.guard';
+import { LoginScreenComponent } from '../../screens/login-screen/login-screen.component';
+import { RegisterScreenComponent } from '../../screens/register-screen/register-screen.component';
+import { MainScreenComponent } from '../../screens/main-screen/main-screen.component';
+import { UsersScreenComponent } from '../../screens/users-screen/users-screen.component';
+import { CreateUserScreenComponent } from '../../screens/create-user-screen/create-user-screen.component';
 
 const title: string = 'Mi Primera Aplicación';
 

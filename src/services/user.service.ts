@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IUserPagination } from '../interfaces/user_pagination.interface';
-import { environment } from '../environments/environment';
-import { IUserCreated, IUserJob } from '../interfaces/user.interface';
+import { environment } from '../config/environments/environment.prod';
+import { IUserCreated, IUserJob } from '../models/interfaces/user.interface';
+import { IUserPagination } from '../models/interfaces/user_pagination.interface';
 
 @Injectable({
   providedIn: 'root'

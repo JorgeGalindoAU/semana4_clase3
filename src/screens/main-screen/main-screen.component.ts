@@ -1,11 +1,6 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TitleComponent } from "../../components/title/title.component";
 import { ButtonComponent } from "../../components/button/button.component";
-import { ActiveFilterComponent } from "../../components/active-filter/active-filter.component";
-import { UserService } from '../../services/user.service';
-import { IUser } from '../../interfaces/user.interface';
-import { Pagination } from "../../components/pagination/pagination.component";
-import { IUserPagination } from '../../interfaces/user_pagination.interface';
 import { RouterLink } from '@angular/router';
 
 @Component({
